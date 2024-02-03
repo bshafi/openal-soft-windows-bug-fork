@@ -1715,6 +1715,12 @@ if(ALSOFT_EXAMPLES)
 
     message(STATUS "Building example programs")
 
+    
+    add_executable(alreverb examples/alreverb.c)
+    target_link_libraries(alreverb PRIVATE ${LINKER_FLAGS} al-excommon
+        ${UNICODE_FLAG})
+    set_target_properties(alreverb PROPERTIES ${DEFAULT_TARGET_PROPS})
+
     if(SNDFILE_FOUND)
         add_executable(alplay examples/alplay.c)
         target_link_libraries(alplay PRIVATE ${LINKER_FLAGS} SndFile::SndFile al-excommon
@@ -1726,10 +1732,6 @@ if(ALSOFT_EXAMPLES)
             ${UNICODE_FLAG})
         set_target_properties(alstream PROPERTIES ${DEFAULT_TARGET_PROPS})
 
-        add_executable(alreverb examples/alreverb.c)
-        target_link_libraries(alreverb PRIVATE ${LINKER_FLAGS} SndFile::SndFile al-excommon
-            ${UNICODE_FLAG})
-        set_target_properties(alreverb PROPERTIES ${DEFAULT_TARGET_PROPS})
 
         add_executable(almultireverb examples/almultireverb.c)
         target_link_libraries(almultireverb
